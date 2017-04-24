@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = [6,7,1,0,8,9,3];
+
+		//快速排序2
+
+		function sort(arr){
+			if(arr.length<=1){
+				return arr;
+			}
+			var mid = Math.floor(arr.length/2);
+			var key = arr.splice(mid,1)[0];
+			var left = [];
+			var right = [];
+			for(var i = 0;i<arr.length;i++){
+				if(arr[i]<key){
+					left.push(arr[i])
+				}else if(arr[i]>key){
+					right.push(arr[i])
+				}
+			}
+			return sort(left).concat([key],sort(right));
+		}
+
+		console.log(sort(arr));
+
+
+
+		//快速排序1
+		// function sort(arr,left,right){
+		// 	var index = partition(arr,left,right);
+		// 	if(left < index -1){
+		// 		sort(arr,left,index-1);
+		// 	}
+		// 	if(index < right){
+		// 		sort(arr,index,right);
+		// 	}
+		// }
+
+		// function partition(arr,i,j){
+		// 	var min = Math.floor((i+j)/2);
+		// 	while(i<=j){
+		// 		while(arr[i]<arr[min]){
+		// 			i++;
+		// 		}
+		// 		while(arr[j]>arr[min]){
+		// 			j--;
+		// 		}
+		// 		if(i<=j){
+		// 			[arr[j],arr[i]] = [arr[i],arr[j]];
+		// 			i++;
+		// 			j--;
+		// 		}
+		// 	}
+		// 	return i;
+		// }
+
+		// sort(arr,0,arr.length-1)
+		// console.log(arr);
+	</script>
+</body>
+</html>
